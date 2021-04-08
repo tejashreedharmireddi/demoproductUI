@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ProductUI.Models.Product>
+
+@{
+    ViewData["Title"] = "GetAll";
+}
+
+<h1>Product details</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vendor)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vendor)
+            </td>
+            <td>
+                <a class="btn btn-success" href="@Url.Action("GetProductById","Product",new { id = item.ProdId })">DisplayProduct</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
